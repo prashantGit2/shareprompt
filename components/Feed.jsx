@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
 
-const Feed = ({serverdata}) => {
+const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const [posts, setPosts] = useState([]);
   const handleChangeSearch = (e) => {
@@ -11,7 +11,7 @@ const Feed = ({serverdata}) => {
   };
   
   useEffect(() => {
-    fetch("/api/prompt/getAllPrompts",{ cache: 'no-store' }).then((response) => response.json()).then((data) => setPosts(data));
+    fetch("/api/prompt/getAllPrompts",{ method:"POST",body:JSON.stringify({limit:10})  , cache: 'no-store' }).then((response) => response.json()).then((data) => setPosts(data));
   }, [])
   
   return (
