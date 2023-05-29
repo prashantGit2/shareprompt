@@ -25,7 +25,7 @@ const Nav = () => {
           alt="Prompto Logo"
           className="object-contain"
         />
-        <p className="logo_text">Prompto</p>
+        <p className="logo_text">Share-Prompt</p>
       </Link>
       {/* {Desktop navigation} */}
       <div className="sm:flex hidden">
