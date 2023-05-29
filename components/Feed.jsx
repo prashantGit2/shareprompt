@@ -26,13 +26,11 @@ const Feed = () => {
   }
 
   useEffect(() => {
-    const fetchPrompts = async () => {
-      const response = await fetch("/api/prompt/getAllPrompts");
-      const data = await response.json();
-      console.log(data);
-      setPosts(data);
+    const fetchPosts = async () => {
+      const resp = await getServerSideProps();
+      setPosts(resp);
     }
-    fetchPrompts();
+    fetchPosts();
   }, [])
   
 
@@ -55,6 +53,11 @@ const Feed = () => {
       />
     </section>
   )
+}
+export const getServerSideProps = async () => {
+  const response = await fetch("/api/prompt/getAllPrompts");
+  const data = await response.json();
+  return data;
 }
 
 export default Feed
