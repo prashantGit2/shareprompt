@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
-const PromptCard = ({ post, handleTagClick, handleEdit=new Function(), handleDelete = new Function() }) => {
+const PromptCard = ({ post, handleTagClick = new Function(), handleEdit=new Function(), handleDelete = new Function() }) => {
   const [copied, setCopied] = useState("");
   const {data:session} = useSession();
   const pathName = usePathname();
@@ -63,7 +63,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit=new Function(), handleDel
       </p>
       <p 
       className="font-inter text-sm blue_gradient cursor-pointer" 
-      onClick={handleTagClick && handleTagClick(post.tag)}
+      onClick={() => handleTagClick(post.tag)}
       >
         #{post.tag}
       </p>
